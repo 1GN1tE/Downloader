@@ -1,0 +1,4 @@
+# Pycaches
+ydown/__pycache__
+ydown/migrations/__pycache__
+downloader/__pycache__
