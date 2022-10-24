@@ -1,5 +1,6 @@
 # Downloader
-A simple youtube downloader which supports video of all resoltions and audio also.
-
+A simple video downloader.
+- Supports youtube videos of all resoltuions.
+- Supports reddit videos with sound
 ## To-Do
-- Add support for other sites like Facebook
+- Add support for Facebook

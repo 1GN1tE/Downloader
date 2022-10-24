@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="background">
+        <div class="title">
+            <p>Reddit Video Downloader</p>
+        </div>
+
+        <div class="content">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input type="submit" value="Download" class="btn btn-info btn-block">
+            </form>
+        </div>
+    </div>
+
+    {% if title %}
+        <div class="dbox">
+            <div class="img-thumb">
+                <img class="img-responsive" src="{{ thumb }}">
+            </div>
+            <div id="desl" class="v-about">
+                <p class="v-title">{{ title }}</p>
+                <section class="infos">
+
+                    <li>Author <b>{{ author }}</b></li>
+                    <li>Subreddit <b>{{ subreddit }}</b></li>
+                    <form action="../download">
+                        <li><button type="submit" style="text-decoration: none;">Download<i class=" fa fa-download"></i></button></li>
+                    </form>
+
+                </section>
+            </div>
+        </div>
+
+    {% endif %}
+
+{% endblock %}

@@ -1,4 +1,9 @@
 # Pycaches
 ydown/__pycache__
 ydown/migrations/__pycache__
+
+rdown/__pycache__
+rdown/migrations/__pycache__
+rdown/tmp
+
 downloader/__pycache__

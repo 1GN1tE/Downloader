@@ -5,6 +5,12 @@ from .forms import DownloadForm
 import re
 
 # Create your views here.
+def error_handler(request, text):
+    context = {
+        'error': text,
+    }
+    return render(request, 'error.html', context)
+
 def video_dn(request):
     global context
     form = DownloadForm(request.POST or None)
@@ -13,7 +19,7 @@ def video_dn(request):
         video_url = form.cleaned_data.get("url")
         regex = r'^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+'
         if not re.match(regex,video_url):
-            return render(request, 'error.html')
+            return error_handler(request, "Incorrect URL")
     
         ydl_opts = {}
         try:
@@ -65,7 +71,7 @@ def video_dn(request):
                 'duration': round(int(meta.get('duration', 1))/60, 2),
                 'views': f'{int(meta.get("view_count")):,}'
             }
-            return render(request, 'home.html', context)
+            return render(request, 'yt.html', context)
         except Exception as error:
-            return HttpResponse(error.args[0])
-    return render(request, 'home.html', {'form': form})
+            return error_handler(request, error.args[0])
+    return render(request, 'yt.html', {'form': form})

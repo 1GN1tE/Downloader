@@ -2,3 +2,4 @@ Django
 django-crispy-forms
 youtube-dl
 whitenoise
+moviepy
